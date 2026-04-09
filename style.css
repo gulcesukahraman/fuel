@@ -13,20 +13,26 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
+
+/* 3. Su Efektinin Duracağı Alan (Zeminde Sabit) */
 #canvas-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* vw kullandık */
-    height: 100vh; /* vh kullandık */
+    width: 100%;
+    height: 100vh;
     z-index: -1;
-    display: block; /* Görünür olduğundan emin olalım */
-
+    display: block;
+    /* Siyah ekranı önlemek için arka plan rengini burada da belirtelim */
+    background-color: #000;
 }
 
-/* Kütüphane için eklenen görseli gizle (Sadece efekt görünsün) */
+/* Kütüphane için eklenen orijinal görseli gizle (Sadece efektli hali görünsün) */
 #canvas-container img {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* 4. İçerik Katmanı (Yazıların Alanı) */
@@ -34,6 +40,12 @@ main {
     position: relative;
     z-index: 1; /* Efektin önünde durması için */
     padding: 40px;
+    pointer-events: none; /* Arka plandaki su etkileşimini engellememesi için */
+}
+
+/* Menü ve Yazılar için tıklanabilirliği geri veriyoruz */
+nav, .hero h1 {
+    pointer-events: auto;
 }
 
 /* 5. Logo ve Menü Alanı */
@@ -57,19 +69,19 @@ nav {
     text-align: center;
 }
 
-/* Senin özel isteğin: Büyük harflerde 'I' harfini 'ı' yapmak */
+/* Özel İstek: Büyük harflerde 'I' harfini 'ı' yapmak için ayar */
 h1, .logo {
     font-size: 8vw;
     line-height: 0.85;
     font-weight: 900;
     text-transform: uppercase;
-    /* Türkçe karakter desteği ve 'ı' harfi için özel ayar */
+    /* Türkçe karakter desteği */
     font-feature-settings: "case" 1, "ss01" 1; 
 }
 
 /* Mobilde yazı boyutunu biraz küçültelim ki taşmasın */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 12vw;
+        font-size: 14vw;
     }
 }
