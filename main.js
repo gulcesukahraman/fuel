@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
     // Görseli oluştur ve yükle
     const img = new Image();
     img.crossOrigin = "anonymous"; // Güvenlik (CORS) hatasını önler
-    img.src = "bground.JPG"; 
+   img.src = "./bground.JPG";
     img.setAttribute("data-sampler", "uSampler0");
 
     // Görsel yüklendiğinde uçağa (plane) ekle
