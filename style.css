@@ -15,21 +15,19 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     
-    /* Arka plan görseli kontrolü */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('back.jpeg');
+    /* ARKA PLAN GÖRSELİ BURADA */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('back.jpeg');
     
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* Su ve Işık Efekti */
 .water-effect {
     position: fixed;
     top: 0;
@@ -66,6 +64,7 @@ body {
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(15px);
+    background: rgba(10, 10, 10, 0.3);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -89,12 +88,22 @@ body {
     transition: 0.3s;
 }
 
+.nav-links a:hover {
+    color: #fff;
+}
+
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .badge {
@@ -143,6 +152,7 @@ p {
     font-weight: 600;
     display: inline-block;
     margin-right: 15px;
+    transition: 0.3s;
 }
 
 .btn-secondary {
@@ -151,4 +161,11 @@ p {
     padding: 14px 30px;
     border-radius: 10px;
     text-decoration: none;
-    border: 1px solid rgba(255,2
+    border: 1px solid rgba(255,255,255,0.1);
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+}
