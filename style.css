@@ -1,40 +1,54 @@
+/* 1. Sayfa Sıfırlama */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 2. Arka Plan ve Genel Renkler */
 body {
     background-color: #000;
     color: #fff;
-    font-family: sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Arka plan görselinin ve su efektinin duracağı alan */
+/* 3. Su Efektinin Duracağı Alan (Zeminde Sabit) */
 #canvas-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1;
+    z-index: -1; /* Yazıların arkasında kalması için */
 }
 
+/* Kütüphane için eklenen görseli gizle (Sadece efekt görünsün) */
+#canvas-container img {
+    display: none;
+}
+
+/* 4. İçerik Katmanı (Yazıların Alanı) */
 main {
     position: relative;
-    z-index: 1;
-    padding: 2rem;
+    z-index: 1; /* Efektin önünde durması için */
+    padding: 40px;
 }
 
+/* 5. Logo ve Menü Alanı */
 nav {
     display: flex;
     justify-content: space-between;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+/* 6. Ana Başlık Alanı (Hero Section) */
 .hero {
     height: 80vh;
     display: flex;
@@ -43,13 +57,19 @@ nav {
     text-align: center;
 }
 
-.hero h1 {
+/* Senin özel isteğin: Büyük harflerde 'I' harfini 'ı' yapmak */
+h1, .logo {
     font-size: 8vw;
-    line-height: 0.9;
+    line-height: 0.85;
+    font-weight: 900;
     text-transform: uppercase;
+    /* Türkçe karakter desteği ve 'ı' harfi için özel ayar */
+    font-feature-settings: "case" 1, "ss01" 1; 
 }
 
-/* "I" harflerini "ı" yapma kuralı */
-h1, .logo, nav {
-    text-transform: uppercase;
+/* Mobilde yazı boyutunu biraz küçültelim ki taşmasın */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 12vw;
+    }
 }
