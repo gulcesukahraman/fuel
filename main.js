@@ -34,7 +34,7 @@ window.addEventListener("load", () => {
     // Görseli HTML'e ve sahneye bağla
     const planeElement = document.getElementById("canvas-container");
     const img = new Image();
-    img.src = "bground.JPG"; 
+  img.src = "bground.JPG"; // Eğer dosya adın bground.JPG ise böyle kalsın.
     img.setAttribute("data-sampler", "uSampler0");
     planeElement.appendChild(img);
 
