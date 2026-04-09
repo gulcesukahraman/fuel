@@ -13,15 +13,15 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
-
-/* 3. Su Efektinin Duracağı Alan (Zeminde Sabit) */
 #canvas-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1; /* Yazıların arkasında kalması için */
+    width: 100vw; /* vw kullandık */
+    height: 100vh; /* vh kullandık */
+    z-index: -1;
+    display: block; /* Görünür olduğundan emin olalım */
+
 }
 
 /* Kütüphane için eklenen görseli gizle (Sadece efekt görünsün) */
