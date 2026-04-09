@@ -1,7 +1,8 @@
 window.addEventListener("load", () => {
     // Sahneyi kur
     const curtains = new Curtains({
-        container: "canvas-container"
+        container: "canvas-container",
+        pixelRatio: Math.min(1.5, window.devicePixelRatio)
     });
 
     // Su efekti ayarları (Shader)
@@ -25,19 +26,17 @@ window.addEventListener("load", () => {
         uniform float uTime;
         void main() {
             vec2 textureCoord = vTextureCoord;
+            // Dalgalanma şiddeti
             textureCoord.x += sin(textureCoord.y * 10.0 + uTime / 30.0) * 0.005;
             textureCoord.y += cos(textureCoord.x * 10.0 + uTime / 30.0) * 0.005;
             gl_FragColor = texture2D(uSampler0, textureCoord);
         }
     `;
 
-    // Görseli HTML'e ve sahneye bağla
+    // Plane oluşturulacak element
     const planeElement = document.getElementById("canvas-container");
-    const img = new Image();
-img.src = "https://gulcesukahraman.github.io/fuel/bground.JPG";
-    img.setAttribute("data-sampler", "uSampler0");
-    planeElement.appendChild(img);
 
+    // Parametreler
     const params = {
         vertexShader: vs,
         fragmentShader: fs,
@@ -46,9 +45,17 @@ img.src = "https://gulcesukahraman.github.io/fuel/bground.JPG";
         },
     };
 
+    // Plane oluştur
     const plane = new Plane(curtains, planeElement, params);
 
+    // Görseli oluştur ve yükle
+    const img = new Image();
+    img.crossOrigin = "anonymous"; // Güvenlik (CORS) hatasını önler
+    img.src = "bground.JPG"; 
+    img.setAttribute("data-sampler", "uSampler0");
+
+    // Görsel yüklendiğinde uçağa (plane) ekle
+    plane.loadImages([img]);
+
     plane.onRender(() => {
-        plane.uniforms.time.value++;
-    });
-});
+        plane.uniforms.time.value
