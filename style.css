@@ -15,8 +15,8 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     
-    /* ARKA PLAN GÖRSELİ BURADA */
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('back.jpeg');
+    /* YENİ DOSYA ADINA GÖRE GÜNCELLENDİ */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('bground.JPG');
     
     background-size: cover;
     background-position: center;
@@ -27,7 +27,6 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
 }
-
 .water-effect {
     position: fixed;
     top: 0;
