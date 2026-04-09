@@ -14,11 +14,15 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
-    /* Arka plan görseli ve hafif karartma */
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('back.jpeg');
+    
+    /* Arka plan görseli kontrolü */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('back.jpeg');
+    
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -50,10 +54,9 @@ body {
 
 @keyframes water-flow {
     0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(10%, 10%) scale(1.2); }
+    100% { transform: translate(8%, 8%) scale(1.1); }
 }
 
-/* Navigasyon */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -83,15 +86,9 @@ body {
     text-decoration: none;
     color: var(--secondary-text);
     font-size: 13px;
-    font-weight: 400;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: #fff;
-}
-
-/* Hero Alanı */
 .hero {
     height: 100vh;
     display: flex;
@@ -107,6 +104,7 @@ body {
     font-size: 11px;
     border: 1px solid rgba(255,255,255,0.1);
     color: var(--secondary-text);
+    display: inline-block;
 }
 
 h1 {
@@ -136,7 +134,6 @@ p {
     margin: 0 auto 40px;
 }
 
-/* Butonlar */
 .btn-primary {
     background: #fff;
     color: #000;
@@ -144,7 +141,6 @@ p {
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
     display: inline-block;
     margin-right: 15px;
 }
@@ -155,11 +151,4 @@ p {
     padding: 14px 30px;
     border-radius: 10px;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn-secondary:hover {
-    background: rgba(255,255,255,0.1);
-}
+    border: 1px solid rgba(255,2
