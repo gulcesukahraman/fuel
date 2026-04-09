@@ -1,1 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* Arka plan görselinin ve su efektinin duracağı alan */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 8vw;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+/* "I" harflerini "ı" yapma kuralı */
+h1, .logo, nav {
+    text-transform: uppercase;
+}
