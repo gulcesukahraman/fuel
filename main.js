@@ -1,11 +1,10 @@
 window.addEventListener("load", () => {
-    // Sahneyi kur
+    // 1. Sahneyi kur
     const curtains = new Curtains({
-        container: "canvas-container",
-        pixelRatio: Math.min(1.5, window.devicePixelRatio)
+        container: "canvas-container"
     });
 
-    // Su efekti ayarları (Shader)
+    // 2. Shader Kodları
     const vs = `
         precision mediump float;
         attribute vec3 aVertexPosition;
@@ -26,17 +25,15 @@ window.addEventListener("load", () => {
         uniform float uTime;
         void main() {
             vec2 textureCoord = vTextureCoord;
-            // Dalgalanma şiddeti
             textureCoord.x += sin(textureCoord.y * 10.0 + uTime / 30.0) * 0.005;
             textureCoord.y += cos(textureCoord.x * 10.0 + uTime / 30.0) * 0.005;
             gl_FragColor = texture2D(uSampler0, textureCoord);
         }
     `;
 
-    // Plane oluşturulacak element
+    // 3. Plane ve Görsel Yükleme
     const planeElement = document.getElementById("canvas-container");
-
-    // Parametreler
+    
     const params = {
         vertexShader: vs,
         fragmentShader: fs,
@@ -45,17 +42,18 @@ window.addEventListener("load", () => {
         },
     };
 
-    // Plane oluştur
     const plane = new Plane(curtains, planeElement, params);
 
-    // Görseli oluştur ve yükle
+    // Görseli GitHub yoluna göre ekliyoruz
     const img = new Image();
-    img.crossOrigin = "anonymous"; // Güvenlik (CORS) hatasını önler
-   img.src = "./bground.JPG";
-    img.setAttribute("data-sampler", "uSampler0");
-
-    // Görsel yüklendiğinde uçağa (plane) ekle
-    plane.loadImages([img]);
+    img.crossOrigin = "anonymous";
+    img.src = "bground.JPG"; // Eğer dosya adın küçük harfse "bground.jpg" yap
+    
+    img.onload = () => {
+        plane.loadImages([img]);
+    };
 
     plane.onRender(() => {
-        plane.uniforms.time.value
+        plane.uniforms.time.value++;
+    });
+});
